@@ -2,20 +2,7 @@ package debugging
 
 import scala.annotation.tailrec
 
-object Predicate {
-
-  def main(args: Array[String]): Unit = {
-    def test1(s: String): TestResult =
-      if (s.contains("42")) Failed
-      else Passed
-
-    def test2(s: String): TestResult =
-      if (s.contains("4") && s.contains("3")) Failed
-      else Passed
-
-    val res = ddmin("154213", test2)
-    println(res)
-  }
+object DDMin {
 
   def ddmin(s: String, test: String => TestResult): String = {
     @tailrec
@@ -55,10 +42,6 @@ object Predicate {
 
     ddmin2(s, 2, getDeltasAndCompliments(s, 2))
   }
-
-  def test(s: String): TestResult =
-    if (s.contains("4") && s.contains("2")) Failed
-    else Passed
 
   sealed trait TestResult
 
